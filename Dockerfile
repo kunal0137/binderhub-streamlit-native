@@ -2,11 +2,20 @@ FROM semoss/docker:4.2.0
 RUN pip3 install jupyterhub jhsingle-native-proxy>=0.0.9
 RUN chmod 777 -R /opt
 
+ARG NB_USER
+ARG NB_UID
+ENV USER ${NB_USER}
+ENV HOME /home/${NB_USER}
+
 # create a user, since we don't want to run as root
-RUN useradd -m jovyan
-ENV HOME=/home/jovyan
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
+ENV HOME /home/${NB_USER}
+WORKDIR ${HOME}
+
 #WORKDIR $HOME
-USER jovyan
 
 #COPY --chown=jovyan:jovyan entrypoint.sh /home/jovyan
 
