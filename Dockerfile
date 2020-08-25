@@ -17,7 +17,7 @@ WORKDIR ${HOME}
 
 #WORKDIR $HOME
 
-#COPY --chown=jovyan:jovyan entrypoint.sh /home/jovyan
+COPY --chown=${NB_USER}:${NB_USER} entrypoint.sh ${HOME}
 
 EXPOSE 8888
 
