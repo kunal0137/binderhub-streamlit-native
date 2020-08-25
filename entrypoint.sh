@@ -35,5 +35,4 @@ destport=$((port + 1))
 
 echo "Using internal port $destport"
 
-jhsingle-native-proxy --destport $destport --authtype none streamlit hello {--}server.port {port} {--}server.headless True {--}server.enableCORS False --port $port
-
+jhsingle-native-proxy --destport 8080 --authtype none bash start.sh {--}server.port {port} {--}server.headless True {--}server.enableCORS False --port $port
