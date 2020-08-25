@@ -23,5 +23,7 @@ EXPOSE 8888
 
 ENTRYPOINT ["${HOME}/entrypoint.sh"]
 
-CMD ["bash", "-c","jhsingle-native-proxy --destport 8080 --authtype none bash start.sh --port 8888"]
+#CMD ["bash", "-c","jhsingle-native-proxy --destport 8080 --authtype none bash start.sh --port 8888"]
+CMD ["jhsingle-native-proxy", "--destport", "8080", "bash", "start.sh", "{--}server.port", "{port}", "{--}server.headless", "True", "{--}server.enableCORS", "False", "--port", "8888"]
+
 #CMD ["jhsingle-native-proxy", "--destport", "8080", "start.sh", "hello", "{--}server.port", "{port}", "{--}server.headless", "True", "{--}server.enableCORS", "False", "--port", "8888"]
