@@ -11,6 +11,7 @@ RUN pip3 install jupyterhub jhsingle-native-proxy>=0.0.9
 
 EXPOSE 8888
 
-ENTRYPOINT ["/opt/apache-tomcat-9.0.26/bin/start.sh"]
+#ENTRYPOINT ["/opt/apache-tomcat-9.0.26/bin/start.sh"]
 
-CMD ["jhsingle-native-proxy", "--destport", "8080", "start.sh", "hello", "{--}server.port", "{port}", "{--}server.headless", "True", "{--}server.enableCORS", "False", "--port", "8888"]
+CMD ["bash", "-c","jhsingle-native-proxy --destport 8080 --authtype none bash start.sh --port 8888"]
+#CMD ["jhsingle-native-proxy", "--destport", "8080", "start.sh", "hello", "{--}server.port", "{port}", "{--}server.headless", "True", "{--}server.enableCORS", "False", "--port", "8888"]
